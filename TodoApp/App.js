@@ -1,5 +1,6 @@
 import React from 'react';
-import{StyleSheet,Text,View,SafeAreaView} from "react-native"; 
+import{StyleSheet,Text,View,SafeAreaView,TouchableOpacity} from "react-native"; 
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default class App extends React.Component {
   render () {
@@ -12,7 +13,14 @@ export default class App extends React.Component {
               Coucou <Text style ={{fontWeight : "300", color : "#6495ed"}}> Zachou </Text>
             </Text>
             <View style = {styles.divider}/>
-            </View>
+          </View>
+          <View style = {{marginVertical : 60}}>
+            <TouchableOpacity style = {styles.add}>
+            <MaterialCommunityIcons name="cat" size={45} color="#6495ed"/>
+            </TouchableOpacity>
+            <Text style={styles.addText}> Miaou </Text>
+          </View>
+
         </SafeAreaView>
       </View>
     );
@@ -28,7 +36,7 @@ const styles = StyleSheet.create(
       justifyContent: "center",
     }, 
     divider: {
-      backgroundColor: "#a9a9a9", 
+      backgroundColor: "#000000", 
       height:1,
       flex:1,
       alignSelf: "center"
@@ -38,7 +46,19 @@ const styles = StyleSheet.create(
       fontWeight: "800", 
       color : "#000000", 
       paddingHorizontal: 64
-    }
+    } ,
+    add : {
+      alignItems: "center", 
+      justifyContent: "center"
+    },
+
+    addText :{
+      fontSize : 36,
+      fontWeight: "400", 
+      color : "#000000", 
+      alignSelf: "center", 
+      paddingVertical : 10,
+    } ,
 
   }
 );
