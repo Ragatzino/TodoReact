@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -14,20 +14,25 @@ import AddTask from "./src/screens/AddTask.js";
 
 export default class App extends React.Component {
   state = {
-    visible : false
+    modalVisible: false,
   }
-  toggleScreen(){
-    this.setState({visible: !this.state.visible});
+  toggleModal(visible) {
+    this.setState({ modalVisible: visible });
   }
   render() {
+    const [modalVisible, setModalVisible] = useState(false);
     return (
       <View style={styles.container}>
-        <Modal animationType = "slide" visible ={this.state.visible}>
-          <View>
-            <Text>Hi</Text>
-          </View>
-        </Modal>
         <SafeAreaView>
+          <Modal 
+            animationType = "slide" 
+            visible ={this.state.visible} 
+            transparent={false} 
+            onRequestClose = {() => this.toggleModal(false)}>
+            <View>
+              <Text>Hi</Text>
+            </View>
+          </Modal>
           <View style={{ marginVertical: 50 }}></View>
           <View style={{ flexDirection: "row" }}>
             <View style={styles.divider} />
@@ -41,7 +46,7 @@ export default class App extends React.Component {
             <View style={styles.divider} />
           </View>
           <View style={{ marginVertical: 10 }}>
-            <TouchableOpacity style={styles.add} onPress={() => this.toggleScreen()}>
+            <TouchableOpacity style={styles.add} onPress={() => this.toggleModal(true)}>
               <MaterialCommunityIcons name="cat" size={45} color="#046582" />
             </TouchableOpacity>
           </View>
