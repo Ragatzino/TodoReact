@@ -8,16 +8,16 @@ const listStyles = StyleSheet.create(
         fontWeight: "500", 
         color : "#ffff", 
         alignSelf: "center", 
-        paddingVertical : 10,
+        paddingVertical : 5,
       } ,
   
       listContainer: {
         paddingVertical : 10, 
         paddingHorizontal : 10, 
-        borderRadius : 40, 
+        borderRadius : 10, 
         alignItems: "center", 
-        width : 500,
-        backgroundColor : "#046582", 
+        width : 350,
+        alignSelf: "center", 
         marginVertical: 10
       },
   
@@ -26,30 +26,32 @@ const listStyles = StyleSheet.create(
         fontWeight: "400", 
         color : "#ffff", 
         alignSelf: "center", 
-        paddingVertical : 5,
+        paddingVertical : 0,
       } ,
   
       count :{
-        fontSize : 30,
+        fontSize : 20,
         fontWeight: "200", 
         color : "#ffff", 
         alignSelf: "center", 
-        paddingVertical : 5,
+        paddingVertical : 0,
       } , 
     }
   )
 
 export default HomeList = ({item}) => {
-      return (
-        <View style ={[listStyles.listContainer, {backgroundColor: item.color}]}>
-        <Text style = {listStyles.listTitle}>{item.id}. <Text style ={{fontWeight : "300"}}> {item.text} </Text>
-        </Text>
-        <View> 
-          <View style ={{alignItems :"center"}}>
-              <Text style={listStyles.count}>0</Text>
-              <Text style={listStyles.subtitle}>Restant</Text>
-          </View>
-        </View>
+  const completeCount = item.subtask.filter(task => task.completed).length;
+  const remainCount = item.subtask.length-completeCount;
+  return (
+    <View style ={[listStyles.listContainer, {backgroundColor: item.color}]}>
+    <Text style = {listStyles.listTitle}> {item.text} </Text>
+    
+    <View> 
+      <View style ={{alignItems :"center"}}>
+        <Text style={listStyles.subtitle}>Remaining: <Text style={listStyles.count}>{remainCount}</Text></Text>
+          
       </View>
-      );
+    </View>
+  </View>
+  );
   }
