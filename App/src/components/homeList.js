@@ -39,7 +39,7 @@ const listStyles = StyleSheet.create(
     }
   )
 
-export default HomeList = ({item}) => {
+const HomeList = ({item}) => {
   const completeCount = item.subtask.filter(task => task.completed).length;
   const remainCount = item.subtask.length-completeCount;
   return (
@@ -55,3 +55,4 @@ export default HomeList = ({item}) => {
   </View>
   );
   }
+export default HomeList;
