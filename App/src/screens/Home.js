@@ -1,8 +1,7 @@
 import React from "react";
 import {StyleSheet,Text,View,SafeAreaView,TouchableOpacity,FlatList} from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { IconButton, Colors } from 'react-native-paper';
-import HomeList from "./components/homeList.js";
+import HomeList from "../components/homeList";
 
 export default class Home extends React.Component {
   
@@ -22,7 +21,8 @@ export default class Home extends React.Component {
               icon="cat"
               color="#046582"
               size={40}
-              onPress={() => console.log('Pressed')}
+              onPress={() => 
+                this.props.navigation.navigate('AddTask')}
               />
           </View>
           <View style={{ height: 500 }}>
