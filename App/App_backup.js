@@ -1,10 +1,9 @@
 import React from "react";
-import 'react-native-gesture-handler';
 import {StyleSheet,Text,View,SafeAreaView,TouchableOpacity,FlatList} from "react-native";
 import { IconButton, Colors } from 'react-native-paper';
-import HomeList from "../components/homeList";
+import HomeList from "./src/components/homeList";
 
-export default class Home extends React.Component {
+export default class App extends React.Component {
   
   render() {
     return (
